@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { food } from './Data/food';
+import Menu from './Component/Menu.jsx';
+import Button from './Component/Button.jsx';
 
 function App() {
+  const [category, setCategory] = useState("All");
+
+  const handleCategoryChange = (newCategory) => {
+    setCategory(newCategory);
+  };
+
+  const filteredFood = category === "All" ? food : food.filter(item => item.category === category);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 style={{ textAlign: "center", marginTop: "30px", marginBottom: "30px" }}>Our Menu</h1>
+      <Button onCategoryChange={handleCategoryChange} />
+      <Menu food={filteredFood} />
     </div>
   );
 }
 
 export default App;
+
