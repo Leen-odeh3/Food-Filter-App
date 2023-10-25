@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { food } from './Data/food';
 import Menu from './Component/Menu.jsx';
 import Button from './Component/Button.jsx';
+import './App.css'
 
 function App() {
   const [category, setCategory] = useState("All");
